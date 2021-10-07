@@ -13,7 +13,7 @@ public class Conversion {
         b = (byte) i;
         System.out.println("i и b " + i + " " + b);
 
-        System.out.println("\nпереобразование типа double d nbg int.");
+        System.out.println("\nпереобразование типа double d тип int.");
 
         i = (int) d;
 
