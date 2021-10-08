@@ -16,11 +16,11 @@ public class FigurePainter {
 
         for (int i = 0; i < 4; i++) {
 
-            for (int j = 3; j >= i; j--) {
+            for (int j = 2; j >= i; j--) {
                 System.out.print("  ");
             }
             for (int k = 0; k <= i; k++) {
-                System.out.print(" *");
+                System.out.print("* ");
             }
             System.out.println();
         }
@@ -33,6 +33,42 @@ public class FigurePainter {
                 System.out.print("* ");
             }
             System.out.println();
+        }
+
+        System.out.println();
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 3; j >= i; j--) {
+                System.out.print(" ");
+            }
+            for (int k = 0; k <= i; k++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+
+        }
+        for (int i = 0; i < 4; i++) {
+            for (int j = 3; j >= i; j--) {
+                System.out.print(" *");
+            }
+            System.out.println();
+            for (int j = 0; j <= i ; j++) {
+                System.out.print(" ");
+            }
+
+        }
+
+        System.out.println();
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 3; j >= i; j--) {
+                System.out.print("* ");
+            }
+            System.out.println();
+            for (int j = 0; j <= i ; j++) {
+                System.out.print("  ");
+            }
+
         }
     }
     }
