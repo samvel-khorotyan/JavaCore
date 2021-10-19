@@ -49,7 +49,7 @@ public class CharUtil {
                 continue;
             }
             result[j] = text[p];
-            System.out.print(result[j] + " ");
+            System.out.print(result[j]);
         }
     }
 }
