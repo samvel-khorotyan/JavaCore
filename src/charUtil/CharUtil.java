@@ -44,7 +44,7 @@ public class CharUtil {
         char[] text = {' ', ' ', 'b', 'a', 'r', 'e', 'v', ' ', ' '};
         char[] result = new char[9];
         int p,j;
-        for (j = 0, p = 0 < text.length; p++,j++) {
+        for (j = 0, p = 0; p < text.length; p++,j++) {
             if (text[p] == ' ') {
                 continue;
             }
