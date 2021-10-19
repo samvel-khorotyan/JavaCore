@@ -7,14 +7,13 @@ public class Orinak1 {
 
         char[] text = {' ', ' ', 'b', 'a', 'r', 'e', 'v', ' ', ' '};
         char[] result = new char[9];
-        for (int i = 0; i < text.length; i++) {
+        int i, j;
+        for (j = 0, i = 0; i < text.length; j++, i++) {
             if (text[i] == ' ') {
                 continue;
             }
-            for (int j = 0; j < 1; j++) {
-                    result[j] = text[i];
-                    System.out.print(result[j] + " ");
-            }
+            result[j] = text[i];
+            System.out.print(result[j] + " ");
         }
     }
 }
