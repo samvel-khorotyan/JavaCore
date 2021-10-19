@@ -43,13 +43,14 @@ public class CharUtil {
 
         char[] text = {' ', ' ', 'b', 'a', 'r', 'e', 'v', ' ', ' '};
         char[] result = new char[9];
-        int p,j;
-        for (j = 0, p = 0; p < text.length; p++,j++) {
+        for (int p = 0; p < text.length; p++) {
             if (text[p] == ' ') {
                 continue;
             }
-            result[j] = text[p];
-            System.out.print(result[j]);
+            for (int j = 0; j < 1; j++) {
+                result[j] = text[p];
+                System.out.print(result[j] + " ");
+            }
         }
     }
 }
