@@ -42,7 +42,7 @@ public class CharUtil {
 
 
         char[] text={' ',' ','b','a','r','e','v',' ',' '};
-        char[] result = new char[9];
+        char[] result = new char[5];
         int p,j;
         for (j=0, p = 0; p < text.length; p++) {
             if (text[p]==' '){
