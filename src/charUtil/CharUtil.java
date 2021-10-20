@@ -41,15 +41,16 @@ public class CharUtil {
         System.out.println(l);
 
 
-        char[] text = {' ', ' ', 'b', 'a', 'r', 'e', 'v', ' ', ' '};
+        char[] text={' ',' ','b','a','r','e','v',' ',' '};
         char[] result = new char[9];
-        int p, j;
-        for (j = 0, p = 0; p < text.length; j++, p++) {
-            if (text[p] == ' ') {
+        int p,j;
+        for (j=0, p = 0; p < text.length; p++) {
+            if (text[p]==' '){
                 continue;
             }
-            result[j] = text[p];
+            result[j]=text[p];
             System.out.print(result[j]);
+            j++;
         }
     }
 }
