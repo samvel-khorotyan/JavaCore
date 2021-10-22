@@ -25,32 +25,39 @@ public class CharUtil {
         char y = 'y';
         boolean f = false;
         for (int j = 0; j < bolola2.length; j++) {
-            if (bolola2[bolola2.length-2]==i & bolola2[bolola2.length-1]==y){
+            if (bolola2[bolola2.length - 2] == i && bolola2[bolola2.length - 1] == y) {
                 f = true;
             }
         }
         System.out.println(f);
 
 
-        char[] bolola3 = {'l', 'o', 'b', 'o', 'b', 'a'};
+        char[] bolola3 = {'l', 'o', 'b', 'o', 'b', 'a', 'g'};
         boolean l = false;
-        for (int m = 0; m < bolola3.length; m++) {
-            if (bolola3[2] == 'b' & bolola3[3] == 'o' & bolola3[4] == 'b')
+        for (int s = 0; s < bolola3.length; s++) {
+            if (bolola3[s] == 'b' && bolola3[s + 2] == 'b') {
                 l = true;
+                break;
+            }
         }
         System.out.println(l);
 
-
-        char[] text={' ',' ','b','a','r','e','v',' ',' '};
-        char[] result = new char[5];
-        int p,j;
-        for (j=0, p = 0; p < text.length; p++) {
-            if (text[p]==' '){
-                continue;
-            }
-            result[j]=text[p];
+        char[] text = {' ', ' ', ' ', ' ', 'b', ' ', 'a', ' ', 'r', ' ', 'e', ' ', 'v', ' ', ' ', ' '};
+        int a1 = 0;
+        int a2 = text.length - 1;
+        while (text[a1] == ' ') {
+            a1++;
+        }
+        while (text[a2] == ' ') {
+            a2--;
+        }
+        char[] result = new char[(a2 - a1) + 1];
+        int x = 0;
+        for (int j = a1; j < a2 + 1; j++) {
+            result[x++] = text[j];
+        }
+        for (int j = 0; j < result.length; j++) {
             System.out.print(result[j]);
-            j++;
         }
     }
 }
