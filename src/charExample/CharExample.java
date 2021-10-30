@@ -1,6 +1,6 @@
-package charUtil;
+package charExample;
 
-public class CharUtil {
+public class CharExample {
 
     public static void main(String[] args) {
 
@@ -16,8 +16,8 @@ public class CharUtil {
 
 
         char[] bolola1 = {'b', 'o', 'l', 'o', 'l', 'a'};
-        System.out.print(bolola1[bolola1.length / 2] + " ");
-        System.out.println(bolola1[bolola1.length / 2 + 1]);
+        System.out.print(bolola1[bolola1.length / 2-1] + " ");
+        System.out.println(bolola1[bolola1.length / 2]);
 
 
         char[] bolola2 = {'b', 'o', 'l', 'o', 'l', 'a'};
@@ -31,10 +31,10 @@ public class CharUtil {
         System.out.println(f);
 
 
-        char[] bolola3 = {'l', 'o', 'a', 'o', 'b', 'a', 'b'};
+        char[] bolola3 = {'b', 'o', 'l', 'o', 'l', 'a'};
         boolean l = false;
-        for (int s = 0; s < bolola3.length; s++) {
-            if (bolola3[s] == 'b' && bolola3[s + 2] == 'b') {
+        for (int s = 0; s < bolola3.length-1; s++) {
+            if (bolola3[s] == 'l' && bolola3[s + 2] == 'l') {
                 l = true;
                 break;
             }

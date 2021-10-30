@@ -7,9 +7,9 @@ public class FigurePainterTest {
         FigurePainter fp = new FigurePainter();
 
         fp.figureOne(5,'#');
-        fp.figureTwo(5,'@');
-        fp.figureThree(5,4,'?');
-        fp.figurefour(5,'&');
-        fp.figureFive(5,4,'^',4);
+        fp.figureTwo(6,'@');
+        fp.figureThree(7,6,'?');
+        fp.figurefour(8,'&');
+        fp.figureFive(9,8,'^',8);
     }
 }
