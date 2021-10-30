@@ -24,15 +24,14 @@ public class CharUtil {
         char i = 'i';
         char y = 'y';
         boolean f = false;
-        for (int j = 0; j < bolola2.length; j++) {
+
             if (bolola2[bolola2.length - 2] == i && bolola2[bolola2.length - 1] == y) {
                 f = true;
-            }
         }
         System.out.println(f);
 
 
-        char[] bolola3 = {'l', 'o', 'b', 'o', 'b', 'a', 'g'};
+        char[] bolola3 = {'l', 'o', 'a', 'o', 'b', 'a', 'b'};
         boolean l = false;
         for (int s = 0; s < bolola3.length; s++) {
             if (bolola3[s] == 'b' && bolola3[s + 2] == 'b') {

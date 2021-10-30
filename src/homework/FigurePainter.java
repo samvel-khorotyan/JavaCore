@@ -45,8 +45,8 @@ public class FigurePainter {
                 System.out.print("* ");
             }
             System.out.println();
-
         }
+
         for (int i = 0; i < 4; i++) {
             for (int j = 3; j >= i; j--) {
                 System.out.print(" *");
@@ -55,10 +55,9 @@ public class FigurePainter {
             for (int j = 0; j <= i; j++) {
                 System.out.print(" ");
             }
-
         }
-
         System.out.println();
+
 
         for (int i = 0; i < 4; i++) {
             for (int j = 3; j >= i; j--) {
@@ -68,7 +67,6 @@ public class FigurePainter {
             for (int j = 0; j <= i; j++) {
                 System.out.print("  ");
             }
-
         }
     }
 }
