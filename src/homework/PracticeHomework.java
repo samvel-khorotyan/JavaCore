@@ -7,11 +7,10 @@ public class PracticeHomework {
     }
 
     int calcAge(int years) {
-        int days = 365;
         if (years % 4 == 0) {
-            days = 366;
+            return 366;
         }
-        return days;
+        return 365;
     }
 
     int nextNumber(int number) {
@@ -19,24 +18,15 @@ public class PracticeHomework {
     }
 
     boolean isSameNum(int a, int b) {
-        boolean trueOrFalse = false;
-        if (a == b) {
-            trueOrFalse = true;
-        }
-        return trueOrFalse;
+        return a == b;
     }
 
     boolean lessThanOrEqualToZero(int number) {
-        boolean b = false;
-        if (number <= 0) {
-            b = true;
-        }
-        return b;
+       return number <= 0;
     }
 
     boolean reverseBool(boolean value){
-        if (value = !true);
-        return value;
+        return !value;
     }
 
     int  maxLength(int[] array1,int[] array2){

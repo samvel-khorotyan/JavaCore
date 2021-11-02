@@ -21,7 +21,7 @@ public class PracticeHomeworkTest {
         boolean num = practiceHomework.lessThanOrEqualToZero(10);
         System.out.println(num);
 
-        boolean value = practiceHomework.reverseBool(true);
+        boolean value = practiceHomework.reverseBool(false);
         System.out.println(value);
 
         int[] array1 = {1, 9, 52, 74, 8, 6, 4, 222, 22, 1};
