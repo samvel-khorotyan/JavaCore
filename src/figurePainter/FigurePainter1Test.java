@@ -1,10 +1,10 @@
 package figurePainter;
 
-public class FigurePainterTest {
+public class FigurePainter1Test {
 
     public static void main(String[] args) {
 
-        FigurePainter fp = new FigurePainter();
+        FigurePainter1 fp = new FigurePainter1();
 
         fp.figureOne(5,'#');
         fp.figureTwo(6,'@');
