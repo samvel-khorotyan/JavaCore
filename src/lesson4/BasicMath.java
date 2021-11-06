@@ -1,7 +1,5 @@
 package lesson4;
 
-import java.awt.geom.Arc2D;
-
 public class BasicMath {
 
     public static void main(String[] args) {
