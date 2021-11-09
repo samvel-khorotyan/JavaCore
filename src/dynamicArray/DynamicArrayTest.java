@@ -11,6 +11,6 @@ public class DynamicArrayTest {
         }
         dynamicArray.print();
 
-        System.out.println(dynamicArray.getByIndex(21));
+        System.out.println(dynamicArray.getByIndex(10));
     }
 }

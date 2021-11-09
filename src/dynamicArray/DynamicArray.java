@@ -33,7 +33,7 @@ public class DynamicArray {
     }
 
     public void print() {
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (array[i] != 0) {
                 System.out.println(array[i]);
             }
