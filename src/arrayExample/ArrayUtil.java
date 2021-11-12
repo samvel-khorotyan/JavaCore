@@ -19,7 +19,7 @@ public class ArrayUtil {
                 max = array1[i];
             }
         }
-        System.out.print(max + " ");
+        System.out.print(max);
 
         System.out.println();
         System.out.println();
