@@ -2,30 +2,30 @@ package braceChecker;
 
 public class Stack {
 
-    int[] stack = new int[10];
-    int index = -1;
+    private char[] stack = new char[10];
+    private int index = -1;
 
-    void push(int item) {
-        if (index == stack.length-1) {
-           extend();
+    public void push(char item) {
+        if (index == stack.length - 1) {
+            char[] array = new char[stack.length + (stack.length / 2)];
+            for (int i = 0; i < stack.length; i++) {
+                array[i] = stack[i];
+            }
+            stack = array;
         }
-            stack[++index] = item;
+        stack[++index] = item;
     }
 
-    private void extend() {
-        int[] array1 = new int[stack.length + (stack.length / 2)];
-        for (int i = 0; i < stack.length; i++) {
-            array1[i] = stack[i];
-        }
-        stack = array1;
-    }
-
-    int pop() {
+    public char pop() {
         if (index < 0) {
-            System.out.println("stack is empty");
-            return -1;
+//            System.err.println("stack is empty");
+            return ' ';
         } else {
             return stack[index--];
         }
+    }
+
+    public boolean isEmpty() {
+        return index == -1;
     }
 }
