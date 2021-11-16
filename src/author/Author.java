@@ -8,12 +8,12 @@ public class Author {
     private int age;
     private String gender;
 
-    Author(){
-         String name;
-         String surname;
-         String email;
-         int age;
-         String gender;
+    Author() {
+        String name;
+        String surname;
+        String email;
+        int age;
+        String gender;
     }
 
     Author(String name, String surname, String email, int age, String gender) {
