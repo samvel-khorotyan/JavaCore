@@ -2,36 +2,37 @@ package author;
 
 public class AuthorStorage {
 
-    private Author[] array = new Author[10];
-    private int size;
+    private Author[] authors = new Author[10];
+    private int size = 0;
 
     public void add(Author author) {
-        if (size == array.length) {
+        if (size == authors.length) {
             extend();
         }
-        array[size++] = author;
+        authors[size++] = author;
+
     }
 
     private void extend() {
-        Author[] array1 = new Author[array.length + (array.length / 2)];
-        for (int i = 0; i < array.length; i++) {
-            array1[i] = array[i];
+        Author[] authors1 = new Author[size + 10];
+        for (int i = 0; i < authors.length; i++) {
+            authors1[i] = authors[i];
         }
-        array = array1;
+        authors = authors1;
     }
 
     public Author getByIndex(int index) {
         if (index < 0 || index > size) {
-            System.err.println("Invalid Index" + index);
+            System.out.println("Invalid Index:" + index);
             return null;
-        } else {
-            return array[index];
         }
+        return authors[index];
     }
 
     public void print() {
         for (int i = 0; i < size; i++) {
-            System.out.println(array[i]);
+            System.out.println(authors[i]);
         }
     }
 }
+

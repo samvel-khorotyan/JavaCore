@@ -7,14 +7,12 @@ public class AuthorTest {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Author author = new Author();
+        System.out.println("քանի հեղինակ ունեք");
+        int num = scanner.nextInt();
         AuthorStorage authorStorage = new AuthorStorage();
 
-        System.out.println("քանի հեղինակ ունենք");
-        int nam = scanner.nextInt();
-
-
-        for (int i = 0; i < nam; i++) {
+        for (int i = 0; i < num; i++) {
+            Author author = new Author();
             System.out.println("մուտքագրեք անունը");
             author.setName(scanner.next());
             System.out.println("մուտքագրեք ազգանունը");
