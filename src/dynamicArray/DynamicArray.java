@@ -60,7 +60,7 @@ public class DynamicArray {
     }
 
     public int getByIndex(int index) {
-        if (index < 0 || index > size) {
+        if (index < 0 || index > size - 1) {
             System.err.println("Invalid Index " + index);
             return -1;
         } else {
