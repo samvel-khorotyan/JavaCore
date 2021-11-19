@@ -2,10 +2,10 @@ package author;
 
 public class Book {
 
-    private String title; // գրքի վերնագիրն է
-    private String description; //գրքի նկարագրությունն է
-    private double price; //գրքի գինն է
-    private int count; //գրքի քանակն է, թե քանի հատ ունենք տվյալ գրքից
+    private String title;
+    private String description;
+    private double price;
+    private int count;
 
     public Book() {
     }
