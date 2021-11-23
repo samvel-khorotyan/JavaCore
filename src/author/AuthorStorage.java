@@ -54,4 +54,22 @@ public class AuthorStorage {
         }
         System.out.println();
     }
+
+    public Author getBYEmail(String email) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].getEmail().equals(email)) {
+                return array[i];
+            }
+        }
+        return null;
+    }
+
+    public void changeAuthor(String email,Author author) {
+        for (int i = 0; i < size; i++) {
+            if (array[i].getEmail().equals(email)){
+                array[i] = author;
+                author = null;
+            }
+        }
+    }
 }
