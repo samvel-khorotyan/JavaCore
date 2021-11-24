@@ -2,46 +2,46 @@ package author;
 
 public class BookStorage {
 
-    private Book[] array = new Book[10];
+    private Book[] book = new Book[10];
     private int size;
 
-    public void add(Book book) {
-        if (size == array.length) {
+    public void add(Book value) {
+        if (size == book.length) {
             extend();
         }
-        array[size++] = book;
+        book[size++] = value;
     }
 
     private void extend() {
-        Book[] array1 = new Book[array.length + (array.length / 2)];
-        System.arraycopy(array, 0, array1, 0, array.length);
-        array = array1;
-    }
-
-    public void searchBooksByTitle(String keyword) {
-        System.out.println();
-        for (int i = 0; i < size; i++) {
-            if (array[i].getTitle().contains(keyword)) {
-                System.out.println(array[i]);
-            }
-        }
-        System.out.println();
+        Book[] book1 = new Book[book.length + (book.length / 2)];
+        System.arraycopy(book, 0, book1, 0, book.length);
+        book = book1;
     }
 
     public void print() {
         System.out.println();
         for (int i = 0; i < size; i++) {
-            System.out.println(array[i]);
+            System.out.println(book[i]);
         }
         System.out.println();
     }
 
-    public void searchBooksByAuthor(String email) {
+    public void searchBooksByTitle(String title) {
+        System.out.println();
         for (int i = 0; i < size; i++) {
-            if (array[i].getAuthor().getEmail().equals(email)) {
-                System.out.println(array[i]);
-                System.out.println();
-            } else {
+            if (book[i].getTitle().contains(title)){
+                System.out.println(book[i]);
+            }
+        }
+        System.out.println();
+    }
+
+    public void searchBookByAuthor(String email) {
+        System.out.println();
+        for (int i = 0; i < size; i++) {
+            if (book[i].getAuthor().getEmail().equals(email)){
+                System.out.println(book[i]);
+            }else {
                 System.err.println("There is no book by that author");
                 System.out.println();
                 break;
@@ -50,21 +50,21 @@ public class BookStorage {
     }
 
     public void countBooksByAuthor(String email) {
-        int count = 0;
+       int count = 0;
         for (int i = 0; i < size; i++) {
-            if (array[i].getAuthor().getEmail().equals(email)) {
+            if (book[i].getAuthor().getEmail().equals(email)){
                 count++;
             }
         }
         System.out.println();
-        System.out.println("The author has " + count + " books");
+        System.out.println(count);
         System.out.println();
     }
 
     public Book changeBookAuthor(String title) {
         for (int i = 0; i < size; i++) {
-            if (array[i].getTitle().equals(title)) {
-                return array[i];
+            if (book[i].getTitle().equals(title)){
+                return book[i];
             }
         }
         return null;
