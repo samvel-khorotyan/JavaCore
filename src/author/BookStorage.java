@@ -29,7 +29,7 @@ public class BookStorage {
     public void searchBooksByTitle(String title) {
         System.out.println();
         for (int i = 0; i < size; i++) {
-            if (book[i].getTitle().contains(title)){
+            if (book[i].getTitle().contains(title)) {
                 System.out.println(book[i]);
             }
         }
@@ -39,9 +39,9 @@ public class BookStorage {
     public void searchBookByAuthor(String email) {
         System.out.println();
         for (int i = 0; i < size; i++) {
-            if (book[i].getAuthor().getEmail().equals(email)){
+            if (book[i].getAuthor().getEmail().equals(email)) {
                 System.out.println(book[i]);
-            }else {
+            } else {
                 System.err.println("There is no book by that author");
                 System.out.println();
                 break;
@@ -50,9 +50,9 @@ public class BookStorage {
     }
 
     public void countBooksByAuthor(String email) {
-       int count = 0;
+        int count = 0;
         for (int i = 0; i < size; i++) {
-            if (book[i].getAuthor().getEmail().equals(email)){
+            if (book[i].getAuthor().getEmail().equals(email)) {
                 count++;
             }
         }
@@ -63,10 +63,40 @@ public class BookStorage {
 
     public Book changeBookAuthor(String title) {
         for (int i = 0; i < size; i++) {
-            if (book[i].getTitle().equals(title)){
+            if (book[i].getTitle().equals(title)) {
                 return book[i];
             }
         }
         return null;
+    }
+
+    public void deleteByAuthor(String email) {
+        int length = size;
+        int j = 0;
+        for (int i = 0; i < length; i++) {
+            if (book[i].getAuthor().getEmail().equals(email)) {
+                book[i] = null;
+                size--;
+            } else {
+                book[j] = book[i];
+                book[i] = null;
+                j++;
+            }
+        }
+    }
+
+    public void deleteBook(String title) {
+        int length = size;
+        int j = 0;
+        for (int i = 0; i < length; i++) {
+            if (book[i].getTitle().equals(title)) {
+                book[i] = null;
+                size--;
+            } else {
+                book[j] = book[i];
+                book[i] = null;
+                j++;
+            }
+        }
     }
 }

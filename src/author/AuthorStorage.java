@@ -38,7 +38,7 @@ public class AuthorStorage {
     public void searchAuthorsByName(String keyword) {
         System.out.println();
         for (int i = 0; i < size; i++) {
-            if (author[i].getName().contains(keyword) || author[i].getSurname().contains(keyword)){
+            if (author[i].getName().contains(keyword) || author[i].getSurname().contains(keyword)) {
                 System.out.println(author[i]);
             }
         }
@@ -48,7 +48,7 @@ public class AuthorStorage {
     public void searchAuthorsByAge(int minAge, int maxAge) {
         System.out.println();
         for (int i = 0; i < size; i++) {
-            if (author[i].getAge() >= minAge && author[i].getAge() <= maxAge){
+            if (author[i].getAge() >= minAge && author[i].getAge() <= maxAge) {
                 System.out.println(author[i]);
             }
         }
@@ -57,21 +57,27 @@ public class AuthorStorage {
 
     public Author getBYEmail(String email) {
         for (int i = 0; i < size; i++) {
-            if (author[i].getEmail().equals(email)){
+            if (author[i].getEmail().equals(email)) {
                 return author[i];
             }
         }
         return null;
     }
 
-    public void changeAuthor(String email,Author authors) {
-        for (int i = 0; i < size; i++) {
-            if (author[i].getEmail().equals(email)){
-                author[i] = authors;
+    public void deleteAuthor(String email) {
+        int length = size;
+        int j = 0;
+        for (int i = 0; i < length; i++) {
+            if (author[i].getEmail().equals(email)) {
+                author[i] = null;
+                size--;
+            } else {
+                author[j] = author[i];
+                author[i] = null;
+                j++;
             }
         }
     }
-
-
 }
+
 

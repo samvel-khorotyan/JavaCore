@@ -1,4 +1,4 @@
-        package author;
+package author;
 
 public class Book {
 
@@ -11,7 +11,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String description, double price, int count,Author author) {
+    public Book(String title, String description, double price, int count, Author author) {
         this.title = title;
         this.description = description;
         this.price = price;
