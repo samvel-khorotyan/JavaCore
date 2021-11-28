@@ -32,9 +32,9 @@ public class LessonStorage {
         return null;
     }
 
-    public void deleteLessonByName(String name) {
+    public void deleteLessonByName(Lesson lessons) {
         for (int i = 0; i < size; i++) {
-            if (lesson[i].getName().equals(name)) {
+            if (lesson[i].equals(lessons)) {
                 ArrayUtil.deleteByIndex(lesson, i, size);
                 size--;
             }

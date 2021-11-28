@@ -34,10 +34,10 @@ public class StudentLessonTest {
                     isRun = false;
                     break;
                 case ADD_LESSON:
-                    addlesson();
+                    addLesson();
                     break;
                 case ADD_STUDENT:
-                    addstudent();
+                    addStudent();
                     break;
                 case PRINT_STUDENTS:
                     studentStorage.print();
@@ -84,7 +84,7 @@ public class StudentLessonTest {
         Lesson lesson = lessonStorage.getByName(name);
 
         if (lesson != null) {
-            lessonStorage.deleteLessonByName(name);
+            lessonStorage.deleteLessonByName(lesson);
             System.out.println();
             System.out.println("The course with that name has been deleted");
         } else {
@@ -107,7 +107,7 @@ public class StudentLessonTest {
         }
     }
 
-    private static void addstudent() {
+    private static void addStudent() {
         System.out.println("please input student email");
         String email = scanner.nextLine();
 
@@ -137,7 +137,7 @@ public class StudentLessonTest {
         }
     }
 
-    private static void addlesson() {
+    private static void addLesson() {
         System.out.println("Please enter a course name");
         String name = scanner.nextLine();
 
