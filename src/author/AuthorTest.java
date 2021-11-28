@@ -23,16 +23,14 @@ public class AuthorTest {
     private static final String CHANGE_AUTHOR = "10";
     private static final String CHANGE_BOOK_AUTHOR = "11";
     private static final String DELETE_BY_AUTHOR = "12";
-    private static final String DELETE_AUTHOR  = "13";
-    private static final String DELETE_BOOK  = "14";
-
+    private static final String DELETE_AUTHOR = "13";
+    private static final String DELETE_BOOK = "14";
 
     public static void main(String[] args) {
 
-        authorStorage.add(new Author("poxos", "poxosyan", 22, "poxosyan@email.com", "male"));
-        authorStorage.add(new Author("poxosuhi", "poxosyan", 23, "poxosyan@email.com", "female"));
-        authorStorage.add(new Author("petros", "petrosyan", 25, "petrosyan@email.com", "male"));
-
+        authorStorage.add(new Author("Armen", "Hayrapetyan", 22, "hayrapetyan@gmail.com", "male"));
+        authorStorage.add(new Author("Karine", "Saroyan", 23, "sargsyan@gmail.com", "female"));
+        authorStorage.add(new Author("Petros", "Petrosyan", 25, "petrosyan@email.com", "male"));
 
         boolean isRran = true;
 
@@ -79,54 +77,87 @@ public class AuthorTest {
                 case CHANGE_BOOK_AUTHOR:
                     changeBookAuthor();
                     break;
-                    case DELETE_BY_AUTHOR:
+                case DELETE_BY_AUTHOR:
                     deleteByAuthor();
                     break;
-                    case DELETE_AUTHOR:
+                case DELETE_AUTHOR:
                     deleteAuthor();
                     break;
-                    case DELETE_BOOK:
+                case DELETE_BOOK:
                     deleteBook();
                     break;
+                default:
+                    System.out.println();
+                    System.err.println("INVALID COMMAND");
             }
         }
     }
 
     private static void deleteBook() {
-        System.out.println("please input book's title");
-        String title = scanner.nextLine();
-        bookStorage.deleteBook(title);
-
-        System.out.println();
-        System.out.println("The book has been deleted");
-        System.out.println();
+        System.out.println("please choose book's serialID");
+        System.out.println("___________________");
+        bookStorage.print();
+        System.out.println("___________________");
+        System.out.println("please input serialID");
+        String serialID = scanner.nextLine();
+        Book book = bookStorage.getBySerialId(serialID);
+        if (book != null) {
+            bookStorage.deleteBook(book);
+            System.out.println();
+            System.out.println("The book has been deleted");
+        } else {
+            System.out.println();
+            System.err.println("Book with serialID does not exists");
+        }
     }
 
     private static void deleteAuthor() {
-        System.out.println("please inpute author's email");
+        chooseEmail();
+        System.out.println("please input Author's email");
         String email = scanner.nextLine();
-        authorStorage.deleteAuthor(email);
-
-        System.out.println();
-        System.out.println("The author has been deleted");
-        System.out.println();
+        Author author = authorStorage.getBYEmail(email);
+        if (author != null) {
+            authorStorage.deleteAuthor(author);
+            System.out.println();
+            System.out.println("The author has been deleted");
+        } else {
+            System.out.println();
+            System.err.println("Author does not exists");
+        }
     }
 
     private static void deleteByAuthor() {
-        System.out.println("please input email");
+        chooseEmail();
+        System.out.println("please input Author's email");
         String email = scanner.nextLine();
-        bookStorage.deleteByAuthor(email);
+        Author author = authorStorage.getBYEmail(email);
+        if (author != null) {
+            bookStorage.deleteByAuthor(author);
+            System.out.println();
+            System.out.println("The author's books have been deleted");
+        } else {
+            System.out.println();
+            System.err.println("Author does not exists");
+        }
+    }
 
-        System.out.println();
-        System.out.println("The author's books have been deleted");
-        System.out.println();
+    private static void chooseEmail() {
+        System.out.println("please choose author's email");
+        System.out.println("___________________");
+        authorStorage.print();
+        System.out.println("___________________");
     }
 
     private static void changeBookAuthor() {
-        System.out.println("Please enter the title of the book");
-        String title = scanner.nextLine();
-        Book book = bookStorage.changeBookAuthor(title);
+        System.out.println("please choose book's serialID");
+        System.out.println("___________________");
+        bookStorage.print();
+        System.out.println("___________________");
+        System.out.println("please input serialID");
+        String serialID = scanner.nextLine();
+        Book book = bookStorage.changeBookAuthor(serialID);
         if (book != null) {
+            chooseEmail();
             System.out.println("please input Author's email");
             String email = scanner.nextLine();
             Author author = authorStorage.getBYEmail(email);
@@ -134,26 +165,19 @@ public class AuthorTest {
                 book.setAuthor(author);
                 System.out.println();
                 System.out.println("Thank you book's author is changed");
-                System.out.println();
             } else {
                 System.out.println();
-                System.err.println("invalid author");
-                System.out.println();
-                changeBookAuthor();
+                System.err.println("Author does not exists");
             }
         } else {
             System.out.println();
-            System.err.println("invalid title");
-            System.out.println();
-            changeBookAuthor();
+            System.err.println("book with serialID does not exists");
         }
     }
 
     private static void changeAuthor() {
-        System.out.println("please choose author's email");
-        System.out.println("___________________");
-        authorStorage.print();
-        System.out.println("___________________");
+        chooseEmail();
+        System.out.println("please input Author's email");
         String email = scanner.nextLine();
         Author author = authorStorage.getBYEmail(email);
         if (author != null) {
@@ -173,31 +197,37 @@ public class AuthorTest {
 
             System.out.println();
             System.out.println("Thank you,author data changed");
-            System.out.println();
+
         } else {
-            System.err.println("ivalid author");
-            changeBookAuthor();
+            System.out.println();
+            System.err.println("Author does not exists");
         }
     }
 
     private static void countBooksByAuthor() {
-        System.out.println("please choose author's email");
-        System.out.println("___________________");
-        authorStorage.print();
-        System.out.println("___________________");
+        chooseEmail();
+        System.out.println("please input Author's email");
         String email = scanner.nextLine();
-
-        bookStorage.countBooksByAuthor(email);
+        Author author = authorStorage.getBYEmail(email);
+        if (author != null) {
+            bookStorage.countBooksByAuthor(author);
+        } else {
+            System.out.println();
+            System.err.println("Author does not exists");
+        }
     }
 
     private static void searchBookByAuthor() {
-        System.out.println("please choose author's email");
-        System.out.println("___________________");
-        authorStorage.print();
-        System.out.println("___________________");
+        chooseEmail();
+        System.out.println("please input Author's email");
         String email = scanner.nextLine();
-
-        bookStorage.searchBookByAuthor(email);
+        Author author = authorStorage.getBYEmail(email);
+        if (author != null) {
+            bookStorage.searchBookByAuthor(author);
+        } else {
+            System.out.println();
+            System.err.println("Author does not exists");
+        }
     }
 
     private static void searchBooksByTitle() {
@@ -224,33 +254,36 @@ public class AuthorTest {
     }
 
     private static void addBook() {
-        System.out.println("please choose author's email");
-        System.out.println("___________________");
-        authorStorage.print();
-        System.out.println("___________________");
+        chooseEmail();
+        System.out.println("please input Author's email");
         String email = scanner.nextLine();
         Author author = authorStorage.getBYEmail(email);
         if (author != null) {
-            System.out.println("Please enter the title of the book");
-            String title = scanner.nextLine();
-            System.out.println("Please enter a book description");
-            String description = scanner.nextLine();
-            System.out.println("Please enter the price of the book");
-            double price = Double.parseDouble(scanner.nextLine());
-            System.out.println("Please enter how many items we have from this book");
-            int count = Integer.parseInt(scanner.nextLine());
+            System.out.println("Please enter the serialId of the book");
+            String serialId = scanner.nextLine();
+            if (bookStorage.getBySerialId(serialId) == null) {
+                System.out.println("Please enter the title of the book");
+                String title = scanner.nextLine();
+                System.out.println("Please enter a book description");
+                String description = scanner.nextLine();
+                System.out.println("Please enter the price of the book");
+                double price = Double.parseDouble(scanner.nextLine());
+                System.out.println("Please enter how many items we have from this book");
+                int count = Integer.parseInt(scanner.nextLine());
 
-            Book book = new Book(title, description, price, count, author);
+                Book book = new Book(serialId, title, description, price, count, author);
 
-            bookStorage.add(book);
+                bookStorage.add(book);
 
-            System.out.println();
-            System.out.println("Tanke you,book was added");
-            System.out.println();
+                System.out.println();
+                System.out.println("Thank you,book was added");
+            } else {
+                System.out.println();
+                System.err.println("Book with serialID: " + serialId + " is exists");
+            }
         } else {
             System.out.println();
             System.err.println("invalid email! please try again");
-            System.out.println();
 
             addBook();
         }
@@ -273,11 +306,11 @@ public class AuthorTest {
         authorStorage.add(author);
 
         System.out.println();
-        System.out.println("Tanke you,author was added");
-        System.out.println();
+        System.out.println("Thank you,author was added");
     }
 
     private static void printCommands() {
+        System.out.println();
         System.out.println("please input " + EXIT + " for EXIT");
         System.out.println("please input " + ADD_AUTHOR + " for add author");
         System.out.println("please input " + ADD_BOOK + " for add book");
@@ -291,9 +324,8 @@ public class AuthorTest {
         System.out.println("please input " + CHANGE_AUTHOR + " for change author");
         System.out.println("please input " + CHANGE_BOOK_AUTHOR + " for change book author");
         System.out.println("please input " + DELETE_BY_AUTHOR + " for delete book's by author");
-        System.out.println("please input " + DELETE_AUTHOR  + " for delete author");
-        System.out.println("please input " + DELETE_BOOK  + " for delete book");
-        System.out.println();
+        System.out.println("please input " + DELETE_AUTHOR + " for delete author");
+        System.out.println("please input " + DELETE_BOOK + " for delete book");
     }
 }
 
