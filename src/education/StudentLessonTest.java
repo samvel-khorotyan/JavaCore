@@ -100,7 +100,7 @@ public class StudentLessonTest {
         Student student = studentStorage.getByLesson(lesson);
 
         if (student != null) {
-            studentStorage.getStudentLesson(lesson);
+            studentStorage.getStudentLesson(student);
         } else {
             System.out.println();
             System.out.println("There is no course with that name");

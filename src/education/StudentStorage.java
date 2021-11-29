@@ -31,10 +31,10 @@ public class StudentStorage {
         return null;
     }
 
-    public void getStudentLesson(String lesson) {
+    public void getStudentLesson(Student students) {
         System.out.println();
         for (int i = 0; i < size; i++) {
-            if (student[i].getLesson().equals(lesson)) {
+            if (student[i].getLesson().equals(students.getLesson())) {
                 System.out.println(student[i]);
             }
         }
