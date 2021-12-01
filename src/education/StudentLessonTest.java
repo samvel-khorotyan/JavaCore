@@ -65,10 +65,8 @@ public class StudentLessonTest {
         System.out.println("please input student email");
         String email = scanner.nextLine();
 
-        Student student = studentStorage.grtByEmail(email);
-
-        if (student != null) {
-            studentStorage.deleteStudentBYEmail(student);
+        if (studentStorage.getByEmail(email) != null) {
+            studentStorage.deleteStudentBYEmail(email);
             System.out.println();
             System.out.println("student data deleted");
         } else {
@@ -81,10 +79,8 @@ public class StudentLessonTest {
         System.out.println("please input lesson name");
         String name = scanner.nextLine();
 
-        Lesson lesson = lessonStorage.getByName(name);
-
-        if (lesson != null) {
-            lessonStorage.deleteLessonByName(lesson);
+        if (lessonStorage.getByName(name) != null) {
+            lessonStorage.deleteLessonByName(name);
             System.out.println();
             System.out.println("The course with that name has been deleted");
         } else {
@@ -110,30 +106,41 @@ public class StudentLessonTest {
     private static void addStudent() {
         System.out.println("please input student email");
         String email = scanner.nextLine();
-
-        Student student = studentStorage.grtByEmail(email);
-
-        if (student == null) {
+        if (studentStorage.getByEmail(email) == null){
             System.out.println("please input student name");
             String name = scanner.nextLine();
             System.out.println("please input student surname");
-            String surname = scanner.nextLine();
+            String surName = scanner.nextLine();
             System.out.println("please input student age");
             int age = Integer.parseInt(scanner.nextLine());
-            System.out.println("please input student phone");
-            String phone = scanner.nextLine();
-            System.out.println("please input student lesson");
-            String lesson = scanner.nextLine();
+            System.out.println("please input student phoneNumber");
+            String phoneNumber = scanner.nextLine();
+            System.out.println("please choose lessonName");
+            System.out.println("_______________");
+            lessonStorage.print();
+            System.out.println("_______________");
+            System.out.println("please input lessonNames");
+            String lessonName = scanner.nextLine();
+            String[] strings = lessonName.split(",");
+            Lesson[] lessons = new Lesson[strings.length];
+            for (int i = 0; i < strings.length; i++) {
+                if (lessonStorage.getByName(strings[i]) != null){
+                    lessons[i] = lessonStorage.getByName(strings[i]);
+                }else {
+                    System.out.println();
+                    System.out.println("This course is not available");
+                }
+            }
 
-            Student student1 = new Student(name, surname, age, email, phone, lesson);
+            Student student = new Student(name,surName,age,email,phoneNumber,lessons);
 
-            studentStorage.add(student1);
+            studentStorage.add(student);
 
             System.out.println();
-            System.out.println("thanks student data added");
-        } else {
+            System.out.println("student added");
+        }else {
             System.out.println();
-            System.err.println("There was already a student by that email");
+            System.out.println("There is already a student by this email");
         }
     }
 

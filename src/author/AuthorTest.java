@@ -28,9 +28,9 @@ public class AuthorTest {
 
     public static void main(String[] args) {
 
-        authorStorage.add(new Author("Armen", "Hayrapetyan", 22, "hayrapetyan@gmail.com", "male"));
-        authorStorage.add(new Author("Karine", "Saroyan", 23, "sargsyan@gmail.com", "female"));
-        authorStorage.add(new Author("Petros", "Petrosyan", 25, "petrosyan@email.com", "male"));
+//        authorStorage.add(new Author("Armen", "Hayrapetyan", 22, "hayrapetyan@gmail.com", "male"));
+//        authorStorage.add(new Author("Karine", "Saroyan", 23, "sargsyan@gmail.com", "female"));
+//        authorStorage.add(new Author("Petros", "Petrosyan", 25, "petrosyan@email.com", "male"));
 
         boolean isRran = true;
 

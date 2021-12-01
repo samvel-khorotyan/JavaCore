@@ -1,5 +1,7 @@
 package education;
 
+import java.util.Objects;
+
 public class Lesson {
 
     private String name;
@@ -53,25 +55,13 @@ public class Lesson {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Lesson lesson = (Lesson) o;
-
-        if (Double.compare(lesson.price, price) != 0) return false;
-        if (name != null ? !name.equals(lesson.name) : lesson.name != null) return false;
-        if (duration != null ? !duration.equals(lesson.duration) : lesson.duration != null) return false;
-        return lecturerName != null ? lecturerName.equals(lesson.lecturerName) : lesson.lecturerName == null;
+        return Double.compare(lesson.price, price) == 0 && Objects.equals(name, lesson.name) && Objects.equals(duration, lesson.duration) && Objects.equals(lecturerName, lesson.lecturerName);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (duration != null ? duration.hashCode() : 0);
-        result = 31 * result + (lecturerName != null ? lecturerName.hashCode() : 0);
-        temp = Double.doubleToLongBits(price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        return Objects.hash(name, duration, lecturerName, price);
     }
 
     @Override

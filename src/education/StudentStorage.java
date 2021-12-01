@@ -22,7 +22,7 @@ public class StudentStorage {
         ArrayUtil.print(student, size);
     }
 
-    public Student grtByEmail(String email) {
+    public Student getByEmail(String email) {
         for (int i = 0; i < size; i++) {
             if (student[i].getEmail().equals(email)) {
                 return student[i];
@@ -40,9 +40,9 @@ public class StudentStorage {
         }
     }
 
-    public void deleteStudentBYEmail(Student students) {
+    public void deleteStudentBYEmail(String email) {
         for (int i = 0; i < size; i++) {
-            if (student[i].equals(students)) {
+            if (student[i].getEmail().equals(email)) {
                 ArrayUtil.deleteByIndex(student, i, size);
                 size--;
             }

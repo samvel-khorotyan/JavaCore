@@ -1,5 +1,8 @@
 package education;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Student {
 
     private String name;
@@ -7,12 +10,12 @@ public class Student {
     private int age;
     private String email;
     private String phone;
-    private String lesson; // թե որ դասընթացին է մասնակցում
+    private Lesson[] lesson;
 
     public Student() {
     }
 
-    public Student(String name, String surname, int age, String email, String phone, String lesson) {
+    public Student(String name, String surname, int age, String email, String phone, Lesson[] lesson) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -61,11 +64,11 @@ public class Student {
         this.phone = phone;
     }
 
-    public String getLesson() {
+    public Lesson[] getLesson() {
         return lesson;
     }
 
-    public void setLesson(String lesson) {
+    public void setLesson(Lesson[] lesson) {
         this.lesson = lesson;
     }
 
@@ -73,25 +76,14 @@ public class Student {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Student student = (Student) o;
-
-        if (age != student.age) return false;
-        if (name != null ? !name.equals(student.name) : student.name != null) return false;
-        if (surname != null ? !surname.equals(student.surname) : student.surname != null) return false;
-        if (email != null ? !email.equals(student.email) : student.email != null) return false;
-        if (phone != null ? !phone.equals(student.phone) : student.phone != null) return false;
-        return lesson != null ? lesson.equals(student.lesson) : student.lesson == null;
+        return age == student.age && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(email, student.email) && Objects.equals(phone, student.phone) && Arrays.equals(lesson, student.lesson);
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + age;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + (lesson != null ? lesson.hashCode() : 0);
+        int result = Objects.hash(name, surname, age, email, phone);
+        result = 31 * result + Arrays.hashCode(lesson);
         return result;
     }
 
@@ -103,7 +95,7 @@ public class Student {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", lesson='" + lesson + '\'' +
+                ", lesson=" + Arrays.toString(lesson) +
                 '}';
     }
 }
