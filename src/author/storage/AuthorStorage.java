@@ -1,4 +1,8 @@
-package author;
+package author.storage;
+
+import author.util.ArrayUtil;
+
+import author.model.Author;
 
 public class AuthorStorage {
 
@@ -39,16 +43,6 @@ public class AuthorStorage {
         System.out.println();
         for (int i = 0; i < size; i++) {
             if (author[i].getName().contains(keyword) || author[i].getSurname().contains(keyword)) {
-                System.out.println(author[i]);
-            }
-        }
-        System.out.println();
-    }
-
-    public void searchAuthorsByAge(int minAge, int maxAge) {
-        System.out.println();
-        for (int i = 0; i < size; i++) {
-            if (author[i].getAge() >= minAge && author[i].getAge() <= maxAge) {
                 System.out.println(author[i]);
             }
         }

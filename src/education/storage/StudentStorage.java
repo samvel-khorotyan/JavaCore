@@ -1,4 +1,10 @@
-package education;
+package education.storage;
+
+import education.model.Lesson;
+
+import education.util.ArrayUtil;
+
+import education.model.Student;
 
 public class StudentStorage {
 
@@ -31,20 +37,10 @@ public class StudentStorage {
         return null;
     }
 
-    public void getStudentLesson(Student students) {
-        System.out.println();
-        for (int i = 0; i < size; i++) {
-            if (student[i].getLesson().equals(students.getLesson())) {
-                System.out.println(student[i]);
-            }
-        }
-    }
-
     public void deleteStudentBYEmail(String email) {
         for (int i = 0; i < size; i++) {
             if (student[i].getEmail().equals(email)) {
                 ArrayUtil.deleteByIndex(student, i, size);
-                size--;
             }
         }
     }
@@ -56,5 +52,15 @@ public class StudentStorage {
             }
         }
         return null;
+    }
+
+    public void printStudentsByLesson(Lesson lesson) {
+        for (int i = 0; i < size; i++) {
+            for (Lesson lesson1 : student[i].getLesson()) {
+                if (lesson1.equals(lesson)) {
+                    System.out.println(student[i]);
+                }
+            }
+        }
     }
 }

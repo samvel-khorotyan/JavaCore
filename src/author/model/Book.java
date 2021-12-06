@@ -1,4 +1,8 @@
-package author;
+package author.model;
+
+import java.util.Arrays;
+
+import java.util.Objects;
 
 public class Book {
 
@@ -7,18 +11,29 @@ public class Book {
     private String description;
     private double price;
     private int count;
-    private Author author;
+    private Author[] authors;
+    private String[] tags;
 
     public Book() {
     }
 
-    public Book(String serialId, String title, String description, double price, int count, Author author) {
+    public Book(String serialId, String title, String description, double price, int count, Author[] authors) {
         this.serialId = serialId;
         this.title = title;
         this.description = description;
         this.price = price;
         this.count = count;
-        this.author = author;
+        this.authors = authors;
+    }
+
+    public Book(String serialId, String title, String description, double price, int count, Author[] authors, String[] tags) {
+        this.serialId = serialId;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.count = count;
+        this.authors = authors;
+        this.tags = tags;
     }
 
     public String getSerialId() {
@@ -61,40 +76,35 @@ public class Book {
         this.count = count;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Author[] getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthors(Author[] authors) {
+        this.authors = authors;
+    }
+
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Book book = (Book) o;
-
-        if (Double.compare(book.price, price) != 0) return false;
-        if (count != book.count) return false;
-        if (serialId != null ? !serialId.equals(book.serialId) : book.serialId != null) return false;
-        if (title != null ? !title.equals(book.title) : book.title != null) return false;
-        if (description != null ? !description.equals(book.description) : book.description != null) return false;
-        return author != null ? author.equals(book.author) : book.author == null;
+        return Double.compare(book.price, price) == 0 && count == book.count && Objects.equals(serialId, book.serialId) && Objects.equals(title, book.title) && Objects.equals(description, book.description) && Arrays.equals(authors, book.authors) && Arrays.equals(tags, book.tags);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = serialId != null ? serialId.hashCode() : 0;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        temp = Double.doubleToLongBits(price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + count;
-        result = 31 * result + (author != null ? author.hashCode() : 0);
+        int result = Objects.hash(serialId, title, description, price, count);
+        result = 31 * result + Arrays.hashCode(authors);
+        result = 31 * result + Arrays.hashCode(tags);
         return result;
     }
 
@@ -106,7 +116,8 @@ public class Book {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", count=" + count +
-                ", author=" + author +
+                ", authors=" + Arrays.toString(authors) +
+                ", tags=" + Arrays.toString(tags) +
                 '}';
     }
 }
