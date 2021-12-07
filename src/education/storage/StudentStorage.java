@@ -43,6 +43,7 @@ public class StudentStorage {
                 ArrayUtil.deleteByIndex(student, i, size);
             }
         }
+        size--;
     }
 
     public Student getByLesson(String lesson) {

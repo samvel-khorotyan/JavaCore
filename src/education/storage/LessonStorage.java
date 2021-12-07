@@ -42,5 +42,6 @@ public class LessonStorage {
                 ArrayUtil.deleteByIndex(lesson, i, size);
             }
         }
+        size--;
     }
 }
