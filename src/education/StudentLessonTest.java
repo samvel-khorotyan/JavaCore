@@ -20,7 +20,7 @@ import java.util.Date;
 
 import java.util.Scanner;
 
-public class StudentLessonTest implements StudentLessonCommands, UserCommands {
+public class StudentLessonTest implements StudentLessonUtil, SuperUserCommands, AdminCommands, UserCommands {
 
     static UserStorage userStorage = new UserStorage();
 
@@ -36,7 +36,7 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
 
         while (isRun) {
 
-            UserCommands.printUserCommands();
+            SuperUserCommands.printUserCommands();
 
             String userCommands = scanner.nextLine();
 
@@ -44,12 +44,15 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
                 case EXIT_0:
                     isRun = false;
                     break;
-                case LOGIN_1:
-                    login();
-                    break;
-                case REGISTER_2:
+                case REGISTER_1:
                     register();
                     break;
+                case LOGIN_2:
+                    login();
+                    break;
+                default:
+                    System.out.println();
+                    System.err.println("invalid command");
             }
         }
     }
@@ -64,7 +67,7 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
             String surname = scanner.nextLine();
             System.out.println("please input user password");
             String password = scanner.nextLine();
-            System.out.println("please input user type");
+            System.out.println("please input user type - (user or admin)");
             String type = scanner.nextLine();
 
             User user = new User(name, surname, email, password, type);
@@ -87,12 +90,13 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
         String password = scanner.nextLine();
         User user1 = userStorage.getByPassword(password);
         if (user != null && user1 != null) {
-            System.out.println("please input type");
+            System.out.println("please input type - (user or admin)");
             String type = scanner.nextLine();
-            if (user.getType().equals(type)) {
-                userSwitch();
-            } else {
+            String admin = "admin";
+            if (type.equals(admin)) {
                 adminSwitch();
+            } else {
+                userSwitch();
             }
         } else {
             System.out.println();
@@ -106,33 +110,33 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
 
         while (isRun) {
 
-            StudentLessonCommands.printCommands();
+            AdminCommands.printCommands();
 
             String command = scanner.nextLine();
 
             switch (command) {
-                case EXIT:
+                case EXIT_A:
                     isRun = false;
                     break;
-                case ADD_LESSON:
+                case ADD_LESSON_A:
                     addLesson();
                     break;
-                case ADD_STUDENT:
+                case ADD_STUDENT_A:
                     addStudent();
                     break;
-                case PRINT_STUDENTS:
+                case PRINT_STUDENTS_A:
                     studentStorage.print();
                     break;
-                case PRINT_STUDENTS_BY_LESSON:
+                case PRINT_STUDENTS_BY_LESSON_A:
                     printStudentsByLesson();
                     break;
-                case PRINT_LESSONS:
+                case PRINT_LESSONS_A:
                     lessonStorage.print();
                     break;
-                case DELETE_LESSON_BY_NAME:
+                case DELETE_LESSON_BY_NAME_A:
                     deleteLessonByName();
                     break;
-                case DELETE_STUDENT_BY_EMAIL:
+                case DELETE_STUDENT_BY_EMAIL_A:
                     deleteStudentByEmail();
                     break;
                 default:
@@ -148,27 +152,27 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
 
         while (isRun) {
 
-            StudentLessonCommands.printCommands2();
+            UserCommands.printCommands();
 
             String command = scanner.nextLine();
 
             switch (command) {
-                case EXIT:
+                case EXIT_U:
                     isRun = false;
                     break;
-                case ADD_LESSON:
+                case ADD_LESSON_U:
                     addLesson();
                     break;
-                case ADD_STUDENT:
+                case ADD_STUDENT_U:
                     addStudent();
                     break;
-                case PRINT_STUDENTS:
+                case PRINT_STUDENTS_U:
                     studentStorage.print();
                     break;
-                case PRINT_STUDENTS_BY_LESSON:
+                case PRINT_STUDENTS_BY_LESSON_U:
                     printStudentsByLesson();
                     break;
-                case PRINT_LESSONS:
+                case PRINT_LESSONS_U:
                     lessonStorage.print();
                     break;
                 default:
@@ -179,7 +183,7 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
     }
 
     private static void deleteStudentByEmail() {
-        StudentLessonCommands.chooseStudent();
+        StudentLessonUtil.chooseStudent();
         System.out.println("please input student email");
         String email = scanner.nextLine();
 
@@ -194,7 +198,7 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
     }
 
     private static void deleteLessonByName() {
-        StudentLessonCommands.chooseLesson();
+        StudentLessonUtil.chooseLesson();
         System.out.println("please input lesson name");
         String name = scanner.nextLine();
 
@@ -209,7 +213,7 @@ public class StudentLessonTest implements StudentLessonCommands, UserCommands {
     }
 
     private static void printStudentsByLesson() {
-        StudentLessonCommands.chooseLesson();
+        StudentLessonUtil.chooseLesson();
         System.out.println("Please enter the name of the student course");
         String lessonName = scanner.nextLine();
         Lesson lesson = lessonStorage.getByName(lessonName);
