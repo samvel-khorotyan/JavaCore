@@ -41,13 +41,13 @@ public class StudentLessonTest implements StudentLessonUtil, SuperUserCommands, 
             String userCommands = scanner.nextLine();
 
             switch (userCommands) {
-                case EXIT_0:
+                case EXIT:
                     isRun = false;
                     break;
-                case REGISTER_1:
+                case REGISTER:
                     register();
                     break;
-                case LOGIN_2:
+                case LOGIN:
                     login();
                     break;
                 default:
