@@ -35,18 +35,18 @@ public class UserStorage {
         return null;
     }
 
-    public User getByEmail(String email) {
+    public User getByEmailAndPassword(String email,String password) {
         for (int i = 0; i < size; i++) {
-            if (users[i].getEmail().equals(email)) {
+            if (users[i].getEmail().equals(email) && users[i].getPassword().equals(password)) {
                 return users[i];
             }
         }
         return null;
     }
 
-    public User getByPassword(String password) {
+    public User getByEmail(String email) {
         for (int i = 0; i < size; i++) {
-            if (users[i].getPassword().equals(password)) {
+            if (users[i].getEmail().equals(email)){
                 return users[i];
             }
         }

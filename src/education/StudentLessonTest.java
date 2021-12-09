@@ -85,11 +85,10 @@ public class StudentLessonTest implements StudentLessonUtil, SuperUserCommands, 
     private static void login() throws ParseException {
         System.out.println("please input email");
         String email = scanner.nextLine();
-        User user = userStorage.getByEmail(email);
         System.out.println("please input password");
         String password = scanner.nextLine();
-        User user1 = userStorage.getByPassword(password);
-        if (user != null && user1 != null) {
+        User user = userStorage.getByEmailAndPassword(email,password);
+        if (user != null) {
             System.out.println("please input type - (user or admin)");
             String type = scanner.nextLine();
             String admin = "admin";
