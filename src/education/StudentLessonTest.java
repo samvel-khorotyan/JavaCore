@@ -87,7 +87,7 @@ public class StudentLessonTest implements StudentLessonUtil, SuperUserCommands, 
         String email = scanner.nextLine();
         System.out.println("please input password");
         String password = scanner.nextLine();
-        User user = userStorage.getByEmailAndPassword(email,password);
+        User user = userStorage.getByEmailAndPassword(email, password);
         if (user != null) {
             System.out.println("please input type - (user or admin)");
             String type = scanner.nextLine();
