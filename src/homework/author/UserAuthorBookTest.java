@@ -1,4 +1,5 @@
 package homework.author;
+
 import homework.author.exception.BookNotFoundException;
 import homework.author.model.Author;
 import homework.author.model.Book;
@@ -228,7 +229,7 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
         System.out.println("___________________");
         System.out.println("please input serialID");
         String serialID = scanner.nextLine();
-        Book book = null;
+        Book book;
         try {
             book = bookStorage.getBySerialId(serialID);
             System.out.println("please input tags separate ,");
@@ -281,7 +282,7 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
         System.out.println("___________________");
         System.out.println("please input serialID");
         String serialID = scanner.nextLine();
-        Book book = null;
+        Book book;
         try {
             book = bookStorage.getBySerialId(serialID);
             System.out.println("please input tags separate ,");
@@ -314,19 +315,19 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
 
     private static void initData() {
         try {
-            Author author1 = new Author("Armen", "Hayretyan", 22, "hayrapetyan@gmail.com", "male", DateUtil.stringToDate("12/05/1991"));
-            Author author2 = new Author("Karine", "Saroyan", 23, "sargsyan@gmail.com", "female", DateUtil.stringToDate("11/03/1999"));
-            Author author3 = new Author("Petros", "Petrosyan", 25, "petrosyan@email.com", "male", DateUtil.stringToDate("30/07/1980"));
+            Author author1 = new Author("Արմեն", "Հայրապետյան", 22, "hayrapetyan@gmail.com", "արական", DateUtil.stringToDate("12/05/1991"));
+            Author author2 = new Author("Կարինե", "Սարեյան", 23, "sargsyan@gmail.com", "իգական", DateUtil.stringToDate("11/03/1999"));
+            Author author3 = new Author("Պետրոս", "Պետրոսյան", 25, "petrosyan@email.com", "արական", DateUtil.stringToDate("30/07/1980"));
             authorStorage.add(author1);
             authorStorage.add(author2);
             authorStorage.add(author3);
 
             Author[] authors = {author1, author2};
             Author[] authors1 = {author3};
-            String[] tags = {"new", "popular", "detektiv", "lav girq"};
+            String[] tags = {"նոր","դետեկտիվ", "լավ գիրք"};
 
-            Book book = new Book("FD578", "girq1", "vep", 4800, 20, authors, tags);
-            Book book1 = new Book("KL987", "girq2", "gexarvestakan", 3700, 13, authors1);
+            Book book = new Book("FD578", "գիրք1", "վեպ", 4800, 20, authors, tags);
+            Book book1 = new Book("KL987", "գիրք2", "գեղառվեստական", 3700, 13, authors1);
             bookStorage.add(book);
             bookStorage.add(book1);
         } catch (ParseException e) {
@@ -341,7 +342,7 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
         System.out.println("___________________");
         System.out.println("please input serialID");
         String serialID = scanner.nextLine();
-        Book book = null;
+        Book book;
         try {
             book = bookStorage.getBySerialId(serialID);
             bookStorage.deleteBook(book);
@@ -398,7 +399,7 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
         System.out.println("___________________");
         System.out.println("please input serialID");
         String serialID = scanner.nextLine();
-        Book book = null;
+        Book book;
         try {
             book = bookStorage.getBySerialId(serialID);
             chooseEmail();

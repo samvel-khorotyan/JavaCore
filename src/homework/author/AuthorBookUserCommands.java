@@ -2,26 +2,26 @@ package homework.author;
 
 public interface AuthorBookUserCommands {
 
-    String LOGOUT = "-1";
-    String EXIT = "0";
-    String ADD_AUTHOR = "1";
-    String ADD_BOOK = "2";
-    String SEARCH_AUTHORS_BY_NAME = "3";
-    String SEARCH_BOOKS_BY_TITLE = "4";
-    String PRINT_AUTHORS = "5";
-    String PRINT_BOOKS = "6";
-    String SEARCH_BOOKS_BY_AUTHOR = "7";
-    String COUNT_BOOKS_BY_AUTHOR = "8";
-    String CHANGE_AUTHOR = "9";
-    String CHANGE_BOOK_AUTHOR = "10";
-    String DELETE_BY_AUTHOR = "11";
-    String DELETE_AUTHOR = "12";
-    String DELETE_BOOK = "13";
-    String ADD_TAG_TO_BOOK = "14";
-    String REMOVE_TAGS_TO_BOOK = "15";
+    String LOGOUT = "0";
+    String EXIT = "1";
+    String ADD_AUTHOR = "2";
+    String ADD_BOOK = "3";
+    String SEARCH_AUTHORS_BY_NAME = "4";
+    String SEARCH_BOOKS_BY_TITLE = "5";
+    String PRINT_AUTHORS = "6";
+    String PRINT_BOOKS = "7";
+    String SEARCH_BOOKS_BY_AUTHOR = "8";
+    String COUNT_BOOKS_BY_AUTHOR = "9";
+    String CHANGE_AUTHOR = "10";
+    String CHANGE_BOOK_AUTHOR = "11";
+    String DELETE_BY_AUTHOR = "12";
+    String DELETE_AUTHOR = "13";
+    String DELETE_BOOK = "14";
+    String ADD_TAG_TO_BOOK = "15";
+    String REMOVE_TAGS_TO_BOOK = "16";
 //  User commands
-    String REGISTER = "0";
-    String LOGIN = "1";
+    String REGISTER = "2";
+    String LOGIN = "3";
 
     static void printAdminCommands() {
         System.out.println();
