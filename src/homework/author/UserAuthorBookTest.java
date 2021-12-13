@@ -8,6 +8,7 @@ import homework.author.storage.AuthorStorage;
 import homework.author.storage.BookStorage;
 import homework.author.storage.UserStorage;
 import homework.author.util.DateUtil;
+
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Locale;
@@ -324,7 +325,7 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
 
             Author[] authors = {author1, author2};
             Author[] authors1 = {author3};
-            String[] tags = {"նոր","դետեկտիվ", "լավ գիրք"};
+            String[] tags = {"նոր", "դետեկտիվ", "լավ գիրք"};
 
             Book book = new Book("FD578", "գիրք1", "վեպ", 4800, 20, authors, tags);
             Book book1 = new Book("KL987", "գիրք2", "գեղառվեստական", 3700, 13, authors1);

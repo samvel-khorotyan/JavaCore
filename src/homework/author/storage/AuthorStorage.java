@@ -1,7 +1,6 @@
 package homework.author.storage;
 
 import homework.author.util.ArrayUtil;
-
 import homework.author.model.Author;
 
 public class AuthorStorage {
@@ -23,7 +22,7 @@ public class AuthorStorage {
     }
 
     public void print() {
-        ArrayUtil.print(authors,size);
+        ArrayUtil.print(authors, size);
     }
 
     public void searchAuthorsByName(String keyword) {

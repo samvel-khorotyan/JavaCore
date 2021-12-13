@@ -19,7 +19,7 @@ public interface AuthorBookUserCommands {
     String DELETE_BOOK = "14";
     String ADD_TAG_TO_BOOK = "15";
     String REMOVE_TAGS_TO_BOOK = "16";
-//  User commands
+    //  User commands
     String REGISTER = "2";
     String LOGIN = "3";
 
@@ -44,7 +44,7 @@ public interface AuthorBookUserCommands {
         System.out.println("please input " + REMOVE_TAGS_TO_BOOK + " for remove tag from book");
     }
 
-    static void printUserCommands(){
+    static void printUserCommands() {
         System.out.println();
         System.out.println("please input " + LOGIN + " for logout");
         System.out.println("please input " + EXIT + " for EXIT");
@@ -58,7 +58,7 @@ public interface AuthorBookUserCommands {
         System.out.println("please input " + COUNT_BOOKS_BY_AUTHOR + " for count books by author");
     }
 
-    static void printSuperUserCommands(){
+    static void printSuperUserCommands() {
         System.out.println();
         System.out.println("please input " + LOGOUT + " for logout");
         System.out.println("please input " + REGISTER + " for register");

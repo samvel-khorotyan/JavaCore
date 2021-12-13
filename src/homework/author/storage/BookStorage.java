@@ -1,11 +1,8 @@
 package homework.author.storage;
 
 import homework.author.exception.BookNotFoundException;
-
 import homework.author.util.ArrayUtil;
-
 import homework.author.model.Author;
-
 import homework.author.model.Book;
 
 public class BookStorage {
@@ -72,15 +69,6 @@ public class BookStorage {
         System.out.println();
         System.out.println("count of " + author.getEmail() + "homework.author's book is " + count);
         System.out.println();
-    }
-
-    public Book changeBookAuthor(String serialID) {
-        for (int i = 0; i < size; i++) {
-            if (books[i].getSerialId().equals(serialID)) {
-                return books[i];
-            }
-        }
-        return null;
     }
 
     public void deleteByAuthor(Author author) {
