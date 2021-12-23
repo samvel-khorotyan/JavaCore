@@ -67,7 +67,7 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "Example{" +
+        return "fileExample.Example{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +

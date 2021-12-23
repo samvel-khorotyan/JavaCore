@@ -14,7 +14,7 @@ public class FileUtilMethods {
                 }
             }
         } catch (IOException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -28,7 +28,7 @@ public class FileUtilMethods {
     public void createFileWithContent(String path2, String filename, String content) {
         File file = new File(path2);
 
-        if (!file.exists()){
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
@@ -36,10 +36,10 @@ public class FileUtilMethods {
             }
         }
 
-       try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename))) {
-           bufferedWriter.write(content);
-       }catch (IOException e){
-           System.out.println(e.getMessage());
-       }
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filename))) {
+            bufferedWriter.write(content);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

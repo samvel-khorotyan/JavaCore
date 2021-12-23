@@ -30,6 +30,6 @@ public class FileUtil {
         System.out.println("PLEASE INPUT CONTENT");
         String content = scanner.nextLine();
 
-        fileUtilMethods.createFileWithContent(path2,filename,content);
+        fileUtilMethods.createFileWithContent(path2, filename, content);
     }
 }

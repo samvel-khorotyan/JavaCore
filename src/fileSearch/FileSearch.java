@@ -10,22 +10,28 @@ public class FileSearch {
     public static void main(String[] args) {
 
         System.out.println("PLEASE INPUT PATH");
-        String path = scanner.nextLine();
-        System.out.println("PLEASE INPUT FILE NAME");
-        String fileName = scanner.nextLine();
+        String pathStr = scanner.nextLine();
+        File path = new File(pathStr);
+        if (!path.exists() || path.isFile()) {
+            System.out.println("PATH DOES NOT EXISTS OR IS NOT DIRECTORY");
+        } else {
+            System.out.println("PLEASE INPUT FILE NAME");
+            String fileName = scanner.nextLine();
+            findFile(path, fileName);
+        }
+    }
 
-        File file = new File(path);
-
-        File[] files = file.listFiles();
-
-        boolean bool = false;
-
-        for (File file1 : files) {
-            if (file1.exists() && file1.getName().equals(fileName)) {
-                bool = true;
+    static void findFile(File parent, String fileName) {
+        for (File file : parent.listFiles()) {
+            if (file.isDirectory()) {
+                findFile(file, fileName);
+            } else {
+                if (file.getName().contains(fileName)) {
+                    System.out.println(file.getAbsolutePath());
+                    break;
+                }
             }
         }
-        System.out.println(bool);
     }
 }
 

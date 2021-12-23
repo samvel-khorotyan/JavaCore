@@ -5,30 +5,46 @@ import java.util.Scanner;
 
 public class ContentSearch {
 
-    private static final String FILE_PATH = "C:\\Users\\User\\Screenshot\\text.txt\\";
-
     static Scanner scanner = new Scanner(System.in);
-
-    static File file = new File(FILE_PATH);
 
     public static void main(String[] args) {
 
-        read();
+        System.out.println("PLEASE INPUT PATH");
+        String pathStr = scanner.nextLine();
+        File path = new File(pathStr);
+        if (!path.exists() || path.isFile()) {
+            System.out.println("PATH DOES NOT EXISTS OR IS NOT DIRECTORY");
+        } else {
+            System.out.println("PLEASE INPUT KEYWORD");
+            String fileName = scanner.nextLine();
+            findFile(path, fileName);
+        }
     }
 
-    private static void read() {
-        try (BufferedReader inputStream = new BufferedReader(new FileReader(FILE_PATH))) {
-            System.out.println("PLEASE INPUT KEYWORD");
-            String name = scanner.nextLine();
-            String line;
-            while ((line = inputStream.readLine()) != null) {
-                if (line.contains(name)) {
-                    System.out.println(file.getName());
-                    break;
+    static void findFile(File parent, String keyword) {
+        for (File file : parent.listFiles()) {
+            if (file.isDirectory()) {
+                findFile(file, keyword);
+            } else {
+                if (file.getName().endsWith(".txt")) {
+                    searchKeyword(file,keyword);
                 }
             }
+        }
+    }
+
+    private static void searchKeyword(File file, String keyword) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            String line;
+            int lineNumber = 1;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.contains(keyword)) {
+                    System.out.println(file.getAbsolutePath() + "line " + lineNumber);
+                }
+                lineNumber++;
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }
