@@ -1,55 +1,47 @@
 package education.storage;
 
 import education.model.Lesson;
-import education.util.ArrayUtil;
 import education.model.Student;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentStorage {
 
-    private Student[] student = new Student[20];
-    private int size;
+    private List<Student> student = new ArrayList<>();
 
     public void add(Student students) {
-        if (size == student.length) {
-            extend();
-        }
-        student[size++] = students;
-    }
-
-    private void extend() {
-        Student[] student1 = new Student[student.length + (student.length / 2)];
-        System.arraycopy(student, 0, student1, 0, student.length);
-        student = student1;
+        student.add(students);
     }
 
     public void print() {
-        ArrayUtil.print(student, size);
+        for (Student student1 : student) {
+            System.out.println(student1);
+        }
     }
 
     public Student getByEmail(String email) {
-        for (int i = 0; i < size; i++) {
-            if (student[i].getEmail().equals(email)) {
-                return student[i];
+        for (Student student1 : student) {
+            if (student1.getEmail().equals(email)) {
+                return student1;
             }
         }
         return null;
     }
 
     public void deleteStudentBYEmail(String email) {
-        for (int i = 0; i < size; i++) {
-            if (student[i].getEmail().equals(email)) {
-                ArrayUtil.deleteByIndex(student, i, size);
+        for (Student student1 : student) {
+            if (student1.getEmail().equals(email)) {
+                student.remove(student1);
+                break;
             }
         }
-        size--;
     }
 
     public void printStudentsByLesson(Lesson lesson) {
-        for (int i = 0; i < size; i++) {
-            for (Lesson lesson1 : student[i].getLesson()) {
-                if (lesson1.equals(lesson)) {
-                    System.out.println(student[i]);
-                }
+        for (Student student1 : student) {
+            if (student1.getLesson().equals(lesson)) {
+                System.out.println(student1);
             }
         }
     }

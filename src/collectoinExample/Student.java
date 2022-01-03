@@ -1,24 +1,22 @@
-package student;
+package collectoinExample;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Student implements Serializable {
+public class Student implements Comparable<Student> {
+
     private String name;
     private String surname;
-    private transient int age;
-    private String phoneNumber;
-    private String lessonName;
+    private int age;
+    private String email;
 
     public Student() {
     }
 
-    public Student(String name, String surname, int age, String phoneNumber, String lessonName) {
+    public Student(String name, String surname, int age, String email) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.phoneNumber = phoneNumber;
-        this.lessonName = lessonName;
+        this.email = email;
     }
 
     public String getName() {
@@ -45,20 +43,12 @@ public class Student implements Serializable {
         this.age = age;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getLessonName() {
-        return lessonName;
-    }
-
-    public void setLessonName(String lessonName) {
-        this.lessonName = lessonName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -66,12 +56,12 @@ public class Student implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return age == student.age && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(phoneNumber, student.phoneNumber) && Objects.equals(lessonName, student.lessonName);
+        return age == student.age && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(email, student.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, age, phoneNumber, lessonName);
+        return Objects.hash(name, surname, age, email);
     }
 
     @Override
@@ -80,8 +70,20 @@ public class Student implements Serializable {
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", lessonName='" + lessonName + '\'' +
+                ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student o) {
+// sa tariqi depqum e ashxatum
+//        if (age == o.age) {
+//            return 0;
+//        } else if (age > o.age) {
+//            return 1;
+//        }
+//        return -1;
+// Stringi depqum grum enq ayspes
+        return name.compareTo(o.name);
     }
 }

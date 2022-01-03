@@ -1,46 +1,38 @@
 package education.storage;
 
-import education.util.ArrayUtil;
 import education.model.Lesson;
+
+import java.util.ArrayList;
 
 public class LessonStorage {
 
-    private Lesson[] lesson = new Lesson[20];
-    private int size;
+    private ArrayList<Lesson> lesson = new ArrayList<>();
 
     public void add(Lesson lessons) {
-        if (size == lesson.length) {
-            extend();
-        }
-        lesson[size++] = lessons;
-    }
-
-    private void extend() {
-        Lesson[] lesson1 = new Lesson[lesson.length + (lesson.length / 2)];
-        System.arraycopy(lesson, 0, lesson1, 0, lesson.length);
-        lesson = lesson1;
+        lesson.add(lessons);
     }
 
     public void print() {
-        ArrayUtil.print(lesson, size);
+        for (Lesson lesson1 : lesson) {
+            System.out.println(lesson1);
+        }
     }
 
-
     public Lesson getByName(String name) {
-        for (int i = 0; i < size; i++) {
-            if (lesson[i].getName().equals(name)) {
-                return lesson[i];
+        for (Lesson lesson1 : lesson) {
+            if (lesson1.getName().equals(name)) {
+                return lesson1;
             }
         }
         return null;
     }
 
     public void deleteLessonByName(String name) {
-        for (int i = 0; i < size; i++) {
-            if (lesson[i].getName().equals(name)) {
-                ArrayUtil.deleteByIndex(lesson, i, size);
+        for (Lesson lesson1 : lesson) {
+            if (lesson1.getName().equals(name)) {
+                lesson.remove(lesson1);
+                break;
             }
         }
-        size--;
     }
 }

@@ -46,7 +46,7 @@ public interface AuthorBookUserCommands {
 
     static void printUserCommands() {
         System.out.println();
-        System.out.println("please input " + LOGIN + " for logout");
+        System.out.println("please input " + LOGOUT + " for logout");
         System.out.println("please input " + EXIT + " for EXIT");
         System.out.println("please input " + ADD_AUTHOR + " for add author");
         System.out.println("please input " + ADD_BOOK + " for add book");

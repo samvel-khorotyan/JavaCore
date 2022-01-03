@@ -8,17 +8,17 @@ public class User {
     private String surname;
     private String email;
     private String password;
-    private String type;
+    private Type type;
 
-    public User(String name, String surname, String email, String password, String type) {
+    public User() {
+    }
+
+    public User(String name, String surname, String email, String password, Type type) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.type = type;
-    }
-
-    public User() {
     }
 
     public String getName() {
@@ -53,11 +53,11 @@ public class User {
         this.password = password;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
@@ -66,7 +66,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(type, user.type);
+        return Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && type == user.type;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", type='" + type + '\'' +
+                ", type=" + type +
                 '}';
     }
 }

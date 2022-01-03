@@ -1,4 +1,4 @@
-package chapter9.figurePainter;
+package figurePainter;
 
 public class FigurePainter {
 

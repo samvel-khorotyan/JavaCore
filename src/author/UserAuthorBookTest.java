@@ -1,10 +1,7 @@
 package author;
 
 import author.exception.BookNotFoundException;
-import author.model.Author;
-import author.model.Book;
-import author.model.Gender;
-import author.model.User;
+import author.model.*;
 import author.storage.AuthorStorage;
 import author.storage.BookStorage;
 import author.storage.UserStorage;
@@ -12,7 +9,6 @@ import author.util.DateUtil;
 
 import java.text.ParseException;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class UserAuthorBookTest implements AuthorBookUserCommands {
@@ -59,9 +55,9 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
             System.out.println("Please enter the user's password");
             String password = scanner.nextLine();
             if (user.getPassword().equals(password)) {
-                if (user.getType().equalsIgnoreCase("ADMIN")) {
+                if (user.getType().equals(Type.ADMIN)) {
                     AdminSwitch();
-                } else if (user.getType().equalsIgnoreCase("USER")) {
+                } else if (user.getType().equals(Type.USER)) {
                     UserSwitch();
                 } else {
                     System.out.println();
@@ -88,19 +84,14 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
             System.out.println("please input user's surname");
             String surname = scanner.nextLine();
             System.out.println("please input user's type (ADMIN or USER)");
-            String type = scanner.nextLine().toUpperCase(Locale.ROOT);
-            if (type.equalsIgnoreCase("ADMIN") || type.equalsIgnoreCase("USER")) {
+            Type type = Type.valueOf(scanner.nextLine().toUpperCase());
 
-                User user = new User(name, surname, email, password, type);
+            User user = new User(name, surname, email, password, type);
 
-                userStorage.add(user);
+            userStorage.add(user);
 
-                System.out.println();
-                System.out.println("thanks user added");
-            } else {
-                System.out.println();
-                System.err.println("This type does not exist");
-            }
+            System.out.println();
+            System.out.println("thanks user added");
         } else {
             System.out.println();
             System.err.println("user with " + email + " already exists");
@@ -317,9 +308,9 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
 
     private static void initData() {
         try {
-            Author author1 = new Author("Արմեն","Հայրապետյան","hayrapetyan@gmail.com",Gender.MALE,DateUtil.stringToDate("11/11/2021"));
-            Author author2 = new Author("Կարինե","Սարոյան","saroyan@gmail.com",Gender.FEMALE,DateUtil.stringToDate("12/12/1998"));
-            Author author3 = new Author("Պետրոս","Պետրոսյան","etrosyan@gmail.com",Gender.MALE,DateUtil.stringToDate("10/10/2000"));
+            Author author1 = new Author("Արմեն", "Հայրապետյան", "hayrapetyan@gmail.com", Gender.MALE, DateUtil.stringToDate("11/11/2021"));
+            Author author2 = new Author("Կարինե", "Սարոյան", "saroyan@gmail.com", Gender.FEMALE, DateUtil.stringToDate("12/12/1998"));
+            Author author3 = new Author("Պետրոս", "Պետրոսյան", "etrosyan@gmail.com", Gender.MALE, DateUtil.stringToDate("10/10/2000"));
             authorStorage.add(author1);
             authorStorage.add(author2);
             authorStorage.add(author3);
@@ -451,7 +442,7 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
 
                 System.out.println();
                 System.out.println("Thank you,author data changed");
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
 
@@ -569,7 +560,7 @@ public class UserAuthorBookTest implements AuthorBookUserCommands {
         }
 
 
-        Author author = new Author(name,surname,email,gender,date);
+        Author author = new Author(name, surname, email, gender, date);
 
         authorStorage.add(author);
 
