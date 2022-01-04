@@ -21,10 +21,8 @@ public class UserStorage {
     }
 
     public User getByEmail(String email) throws UserNotFoundException {
-        for (Map.Entry<String, User> stringUserEntry : usersMap.entrySet()) {
-            if (stringUserEntry.getKey().equals(email)) {
-                return stringUserEntry.getValue();
-            }
+        if (usersMap.containsKey(email)){
+            return usersMap.get(email);
         }
         throw new UserNotFoundException("Email does not exist " + email);
     }
