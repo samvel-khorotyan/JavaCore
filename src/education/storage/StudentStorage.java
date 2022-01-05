@@ -40,8 +40,10 @@ public class StudentStorage {
 
     public void printStudentsByLesson(Lesson lesson) {
         for (Student student1 : student) {
-            if (student1.getLesson().equals(lesson)) {
-                System.out.println(student1);
+            for (Lesson lesson1 : student1.getLesson()) {
+                if (lesson1.equals(lesson)){
+                    System.out.println(student1);
+                }
             }
         }
     }
