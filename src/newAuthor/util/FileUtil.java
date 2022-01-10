@@ -71,8 +71,7 @@ public class FileUtil {
             }
         } else {
             try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(bookFile))) {
-                Object obj = inputStream.readObject();
-                return (List<Book>) obj;
+                return (List<Book>) inputStream.readObject();
             } catch (EOFException e) {
 
             } catch (IOException | ClassNotFoundException e) {
