@@ -5,8 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static multiThreadReadFile.MultiThreadReadDemo.countOfKeyword;
 
-class MultiThreadRead implements Runnable {
-
+public class MultiThreadRead implements Runnable {
 
     Thread thread;
     List<String> strings;
@@ -19,7 +18,6 @@ class MultiThreadRead implements Runnable {
         thread.start();
     }
 
-
     @Override
     public void run() {
         String keyword = ";";
@@ -29,6 +27,4 @@ class MultiThreadRead implements Runnable {
             }
         }
     }
-
 }
-

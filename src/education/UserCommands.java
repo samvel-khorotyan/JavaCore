@@ -2,7 +2,6 @@ package education;
 
 public interface UserCommands {
 
-
     String EXIT = "0";
     String LOGOUT = "1";
     String ADD_LESSON = "2";
